@@ -88,6 +88,7 @@
       height: 60vh;
       background: url('https://i.ibb.co/F44ZnBD5/surf-image.png') center center/cover no-repeat;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
@@ -108,6 +109,19 @@
     .hero-content h1 {
       font-size: 2.5rem;
       opacity: 0.85;
+    }
+    
+    /* Down Arrow */
+    .down-arrow {
+      margin-top: 2rem;
+      font-size: 2.5rem;
+      color: #fff;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
     }
 
     /* CALENDLY SECTION */
@@ -158,6 +172,7 @@
     <div class="hero-content">
       <h1>Book your session</h1>
     </div>
+    <div class="down-arrow">&#x2193;</div>
   </section>
 
   <!-- Calendly inline widget -->
