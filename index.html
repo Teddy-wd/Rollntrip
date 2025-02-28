@@ -264,46 +264,47 @@
   <!-- JavaScript for Calendly & Mobile Menu -->
   <script>
     function toggleCalendly(button, location) {
-      // Close all other Calendly widgets
+      // Get the Calendly container directly below the clicked button
+      let widgetContainer = button.nextElementSibling;
+      // Check if this widget is already open
+      let isCurrentlyOpen = widgetContainer.style.display === "block";
+      
+      // Close all Calendly widgets
       document.querySelectorAll('.calendly-widget').forEach(widget => {
         widget.innerHTML = "";
         widget.style.display = "none";
       });
       
-      // Get the Calendly container directly below the clicked button
-      let widgetContainer = button.nextElementSibling;
+      // If the clicked widget was already open, do nothing further (it remains closed)
+      if (isCurrentlyOpen) return;
+      
+      // Prepare the URL (with cookie banner hidden)
       let urls = {
         "port-grimaud": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
-        "point-b": "https://calendly.com/booking-rollntrip/at-la-nartelle?hide_gdpr_banner=1&primary_color=000000",
+        "point-b": "https://calendly.com/booking-rollntrip/at-la-nartelle?hide_gdpr_banner=1",
         "point-c": "https://calendly.com/point-c/30min?hide_gdpr_banner=1",
         "point-d": "https://calendly.com/point-d/30min?hide_gdpr_banner=1",
         "point-e": "https://calendly.com/point-e/30min?hide_gdpr_banner=1",
         "point-f": "https://calendly.com/point-f/30min?hide_gdpr_banner=1"
       };
       
-      // Toggle widget: if already loaded, remove it.
-      if (widgetContainer.innerHTML.trim() !== "") {
-        widgetContainer.innerHTML = "";
-        widgetContainer.style.display = "none";
-      } else {
-        // Display beach animation while loading
-        widgetContainer.innerHTML = `<div class="beach-animation">🏖</div>`;
-        widgetContainer.style.display = "block";
-        
-        // Use Calendly's official inline widget initialization
-        Calendly.initInlineWidget({
-          url: urls[location],
-          parentElement: widgetContainer,
-          prefill: {},
-          utm: {}
-        });
-        
-        // Optional: remove the beach animation after a short delay
-        setTimeout(() => {
-          let anim = widgetContainer.querySelector('.beach-animation');
-          if (anim) anim.style.display = "none";
-        }, 800);
-      }
+      // Show beach animation while loading
+      widgetContainer.innerHTML = `<div class="beach-animation">🏖</div>`;
+      widgetContainer.style.display = "block";
+      
+      // Initialize Calendly's inline widget with the official script
+      Calendly.initInlineWidget({
+        url: urls[location],
+        parentElement: widgetContainer,
+        prefill: {},
+        utm: {}
+      });
+      
+      // Remove the beach animation after a short delay
+      setTimeout(() => {
+        let anim = widgetContainer.querySelector('.beach-animation');
+        if (anim) anim.style.display = "none";
+      }, 800);
     }
     
     function toggleMenu() {
