@@ -116,54 +116,43 @@
       font-size: 2.5rem;
       opacity: 0.85;
     }
-    
-    /* Down Arrow */
-    .down-arrow {
-      margin-top: 2rem;
-      font-size: 2.5rem;
-      color: #fff;
-      animation: bounce 2s infinite;
-      z-index: 2;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
 
-    /* Calendly Dropdown */
-    .calendly-container {
+    /* Meeting Points Section */
+    .meeting-points {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
       padding: 2rem;
       background-color: #f9f9f9;
+      text-align: center;
     }
 
-.calendly-button {
-  width: 100%; /* Full-width button */
-  background-color: black; /* Black background */
-  color: white; /* White text */
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-align: center;
-  padding: 15px 0;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  display: flex;
-    border-radius: 5px;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-}
+    .meeting-button {
+      width: 100%;
+      max-width: 800px;
+      background-color: black;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 15px 0;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+    }
 
-.calendly-button:hover {
-  background-color: #A9FCED; /* Highlight effect */
-  color: black;
-}
+    .meeting-button:hover {
+      background-color: #A9FCED;
+      color: black;
+    }
 
-
+    /* Calendly Embed */
     .calendly-inline-widget {
       width: 100%;
       max-width: 800px;
@@ -204,56 +193,45 @@
     <div class="hero-content">
       <h1>Book your session</h1>
     </div>
-    <div class="down-arrow">&#x2193;</div>
   </section>
 
-  <!-- Calendly Section -->
-  <div class="calendly-container">
-    <button class="calendly-button" onclick="toggleCalendly()">Session at Port Grimaud</button>
-    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000"></div>
-  </div>
+  <!-- Meeting Points Section -->
+  <section class="meeting-points">
+    <button class="meeting-button" onclick="toggleCalendly('port-grimaud')">Session at Port Grimaud</button>
+    <button class="meeting-button" onclick="toggleCalendly('point-b')">Session at Point B</button>
+    <button class="meeting-button" onclick="toggleCalendly('point-c')">Session at Point C</button>
+    <button class="meeting-button" onclick="toggleCalendly('point-d')">Session at Point D</button>
+    <button class="meeting-button" onclick="toggleCalendly('point-e')">Session at Point E</button>
+    <button class="meeting-button" onclick="toggleCalendly('point-f')">Session at Point F</button>
+
+    <div id="calendly-widget" class="calendly-inline-widget"></div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
     &copy; 2025 RollnTrip
   </footer>
 
-  <!-- JavaScript for Lazy Loading Calendly & Mobile Menu -->
+  <!-- JavaScript for Calendly -->
   <script>
-    function loadCalendly() {
-      let script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://assets.calendly.com/assets/external/widget.js";
-      script.async = true;
-      document.body.appendChild(script);
-      
-      script.onload = function () {
-        document.getElementById("calendly-widget").style.display = "block";
-      };
-    }
-
-    function toggleCalendly() {
+    function toggleCalendly(location) {
       let calendlyWidget = document.getElementById("calendly-widget");
-      
-      if (calendlyWidget.style.display === "none" || calendlyWidget.style.display === "") {
+      let urls = {
+        "port-grimaud": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
+        "point-b": "https://calendly.com/point-b/30min",
+        "point-c": "https://calendly.com/point-c/30min",
+        "point-d": "https://calendly.com/point-d/30min",
+        "point-e": "https://calendly.com/point-e/30min",
+        "point-f": "https://calendly.com/point-f/30min"
+      };
+
+      if (calendlyWidget.style.display === "none" || calendlyWidget.dataset.url !== urls[location]) {
+        calendlyWidget.dataset.url = urls[location];
+        calendlyWidget.innerHTML = `<iframe src="${urls[location]}" width="100%" height="700px" frameborder="0"></iframe>`;
         calendlyWidget.style.display = "block";
-        loadCalendly();
       } else {
         calendlyWidget.style.display = "none";
       }
-    }
-
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    }
-  </script>
-
-  <!-- PWA Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-      .then(reg => console.log("Service Worker Registered"))
-      .catch(err => console.log("Service Worker Error", err));
     }
   </script>
 
