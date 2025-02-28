@@ -19,19 +19,32 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    
+    /* Down Arrow */
+    .down-arrow {
+      margin-top: 2rem;
+      font-size: 2.5rem;
+      color: #fff;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    
     /* Smooth Scrolling */
     html {
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-
+    
     body {
       font-family: 'Sora', sans-serif;
       color: #333;
       background-color: #fff;
     }
-
+    
     /* HEADER & NAVIGATION */
     header {
       position: relative;
@@ -66,7 +79,7 @@
     .nav-links li a:hover {
       color: #A9FCED;
     }
-
+    
     /* Mobile Navigation */
     @media (max-width: 768px) {
       .nav-links {
@@ -87,7 +100,7 @@
         display: block;
       }
     }
-
+    
     /* HERO SECTION */
     .hero {
       position: relative;
@@ -99,6 +112,7 @@
       justify-content: center;
       text-align: center;
       padding: 1rem;
+      letter-spacing: -2px;
     }
     .hero::before {
       content: "";
@@ -116,7 +130,7 @@
       font-size: 2.5rem;
       opacity: 0.85;
     }
-
+    
     /* Meeting Points Section */
     .meeting-points {
       display: flex;
@@ -126,11 +140,15 @@
       background-color: #f9f9f9;
       text-align: center;
     }
-
-    .meeting-button {
+    /* Each meeting point container */
+    .meeting-point {
       width: 100%;
       max-width: 800px;
-      background-color: black;
+      margin-bottom: 20px;
+    }
+    .meeting-button {
+      width: 100%;
+      background: linear-gradient(90deg, #000000, #383838);
       color: white;
       font-size: 1.2rem;
       font-weight: 600;
@@ -140,28 +158,26 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
-      margin: 10px 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      text-transform: uppercase;
+      text-transform: lower;
+      letter-spacing: -0.5px;
     }
-
     .meeting-button:hover {
-      background-color: #A9FCED;
-      color: black;
+      background: linear-gradient(90deg, #383838, #000000);
+      color: #A9FCED;
     }
-
-    /* Calendly Embed */
-    .calendly-inline-widget {
+    
+    /* Calendly Embed container (within each meeting point) */
+    .calendly-widget {
       width: 100%;
-      max-width: 800px;
       height: 700px;
       border: none !important;
       display: none;
       margin-top: 20px;
     }
-
+    
     /* FOOTER */
     footer {
       text-align: center;
@@ -172,7 +188,7 @@
   </style>
 </head>
 <body>
-
+  
   <!-- HEADER + NAV -->
   <header>
     <nav>
@@ -187,53 +203,75 @@
       </ul>
     </nav>
   </header>
-
+  
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
       <h1>Book your session</h1>
     </div>
+    <div class="down-arrow">&#x2193;</div>
   </section>
-
+  
   <!-- Meeting Points Section -->
   <section class="meeting-points">
-    <button class="meeting-button" onclick="toggleCalendly('port-grimaud')">Session at Port Grimaud</button>
-    <button class="meeting-button" onclick="toggleCalendly('point-b')">Session at Point B</button>
-    <button class="meeting-button" onclick="toggleCalendly('point-c')">Session at Point C</button>
-    <button class="meeting-button" onclick="toggleCalendly('point-d')">Session at Point D</button>
-    <button class="meeting-button" onclick="toggleCalendly('point-e')">Session at Point E</button>
-    <button class="meeting-button" onclick="toggleCalendly('point-f')">Session at Point F</button>
-
-    <div id="calendly-widget" class="calendly-inline-widget"></div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'port-grimaud')">Session at Port Grimaud</button>
+      <div class="calendly-widget"></div>
+    </div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-b')">Session at La Nartelle</button>
+      <div class="calendly-widget"></div>
+    </div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-c')">Session at Pampelonne</button>
+      <div class="calendly-widget"></div>
+    </div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-d')">Session at Saint Aygulf</button>
+      <div class="calendly-widget"></div>
+    </div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-e')">Session at Gros Pin</button>
+      <div class="calendly-widget"></div>
+    </div>
+    <div class="meeting-point">
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-f')">Session at La Gaillarde</button>
+      <div class="calendly-widget"></div>
+    </div>
   </section>
-
+  
   <!-- FOOTER -->
   <footer>
     &copy; 2025 RollnTrip
   </footer>
-
-  <!-- JavaScript for Calendly -->
+  
+  <!-- JavaScript for Calendly & Mobile Menu -->
   <script>
-    function toggleCalendly(location) {
-      let calendlyWidget = document.getElementById("calendly-widget");
+    function toggleCalendly(button, location) {
+      // Get the calendly container directly below the clicked button
+      let widgetContainer = button.nextElementSibling;
       let urls = {
         "port-grimaud": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
-        "point-b": "https://calendly.com/point-b/30min",
-        "point-c": "https://calendly.com/point-c/30min",
-        "point-d": "https://calendly.com/point-d/30min",
-        "point-e": "https://calendly.com/point-e/30min",
-        "point-f": "https://calendly.com/point-f/30min"
+        "point-b": "https://calendly.com/point-b/30min?hide_gdpr_banner=1",
+        "point-c": "https://calendly.com/point-c/30min?hide_gdpr_banner=1",
+        "point-d": "https://calendly.com/point-d/30min?hide_gdpr_banner=1",
+        "point-e": "https://calendly.com/point-e/30min?hide_gdpr_banner=1",
+        "point-f": "https://calendly.com/point-f/30min?hide_gdpr_banner=1"
       };
-
-      if (calendlyWidget.style.display === "none" || calendlyWidget.dataset.url !== urls[location]) {
-        calendlyWidget.dataset.url = urls[location];
-        calendlyWidget.innerHTML = `<iframe src="${urls[location]}" width="100%" height="700px" frameborder="0"></iframe>`;
-        calendlyWidget.style.display = "block";
+      
+      // Toggle display and content
+      if (widgetContainer.style.display === "none" || widgetContainer.style.display === "") {
+        widgetContainer.innerHTML = `<iframe src="${urls[location]}" width="100%" height="700px" frameborder="0" style="border:0;"></iframe>`;
+        widgetContainer.style.display = "block";
       } else {
-        calendlyWidget.style.display = "none";
+        widgetContainer.style.display = "none";
       }
     }
+    
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
   </script>
-
+  
 </body>
 </html>
