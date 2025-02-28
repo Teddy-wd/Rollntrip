@@ -130,30 +130,47 @@
       50% { transform: translateY(10px); }
     }
 
-    /* CALENDLY SECTION */
+    /* Calendly Dropdown */
     .calendly-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       padding: 2rem;
       background-color: #f9f9f9;
-      min-height: 700px;
     }
+
+.calendly-button {
+  width: 100%; /* Full-width button */
+  background-color: black; /* Black background */
+  color: white; /* White text */
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 0;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.calendly-button:hover {
+  background-color: #A9FCED; /* Highlight effect */
+  color: black;
+}
+
+
     .calendly-inline-widget {
       width: 100%;
       max-width: 800px;
       height: 700px;
       border: none !important;
-      overflow: hidden; /* Disable internal scrolling */
-      pointer-events: none; /* Prevent interaction while loading */
-    }
-
-    /* Fix Mobile Scrolling Issues */
-    iframe {
-      overflow: hidden !important;
-      width: 100%;
-      height: 100%;
-      pointer-events: auto; /* Enable after loading */
+      display: none;
+      margin-top: 20px;
     }
 
     /* FOOTER */
@@ -190,8 +207,9 @@
     <div class="down-arrow">&#x2193;</div>
   </section>
 
-  <!-- Calendly inline widget -->
+  <!-- Calendly Section -->
   <div class="calendly-container">
+    <button class="calendly-button" onclick="toggleCalendly()">Session at Port Grimaud</button>
     <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000"></div>
   </div>
 
@@ -210,22 +228,20 @@
       document.body.appendChild(script);
       
       script.onload = function () {
-        let calendlyWidget = document.getElementById("calendly-widget");
-        calendlyWidget.style.display = "block";
-        calendlyWidget.style.pointerEvents = "auto"; // Enable scrolling inside Calendly after load
+        document.getElementById("calendly-widget").style.display = "block";
       };
     }
 
-    let observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadCalendly();
-          observer.disconnect();
-        }
-      });
-    });
-
-    observer.observe(document.querySelector(".calendly-container"));
+    function toggleCalendly() {
+      let calendlyWidget = document.getElementById("calendly-widget");
+      
+      if (calendlyWidget.style.display === "none" || calendlyWidget.style.display === "") {
+        calendlyWidget.style.display = "block";
+        loadCalendly();
+      } else {
+        calendlyWidget.style.display = "none";
+      }
+    }
 
     function toggleMenu() {
       document.querySelector('.nav-links').classList.toggle('active');
