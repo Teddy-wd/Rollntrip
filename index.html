@@ -20,6 +20,12 @@
       box-sizing: border-box;
     }
 
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Sora', sans-serif;
       color: #333;
@@ -138,7 +144,16 @@
       max-width: 800px;
       height: 700px;
       border: none !important;
-      display: none;
+      overflow: hidden; /* Disable internal scrolling */
+      pointer-events: none; /* Prevent interaction while loading */
+    }
+
+    /* Fix Mobile Scrolling Issues */
+    iframe {
+      overflow: hidden !important;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto; /* Enable after loading */
     }
 
     /* FOOTER */
@@ -195,7 +210,9 @@
       document.body.appendChild(script);
       
       script.onload = function () {
-        document.getElementById("calendly-widget").style.display = "block";
+        let calendlyWidget = document.getElementById("calendly-widget");
+        calendlyWidget.style.display = "block";
+        calendlyWidget.style.pointerEvents = "auto"; // Enable scrolling inside Calendly after load
       };
     }
 
