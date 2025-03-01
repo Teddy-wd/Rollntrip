@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Added viewport meta for mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rollntrip - About Us</title>
-  <!-- Example Google Font -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Load Sora Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     /* RESET & BASE STYLES */
     * {
@@ -17,9 +16,9 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Sora', sans-serif;
       color: #fff;
-      background-color: #000; /* Main background color */
+      background-color: #000;
       line-height: 1.6;
     }
 
@@ -28,15 +27,7 @@
       display: block;
     }
 
-    /* CONTAINERS */
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 0;
-    }
-
-        /* HEADER & NAVIGATION */
+    /* HEADER & NAVIGATION */
     header {
       position: relative;
       width: 100%;
@@ -70,8 +61,7 @@
     .nav-links li a:hover {
       color: #A9FCED;
     }
-    
-    /* Mobile Navigation */
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -80,7 +70,7 @@
         position: absolute;
         top: 60px;
         left: 0;
-        background-color: black;
+        background-color: #000;
         text-align: center;
         padding: 1rem 0;
       }
@@ -95,108 +85,73 @@
     /* HERO SECTION */
     .hero {
       position: relative;
-      height: 80vh; /* Adjust as needed */
-      background: url("hero-bg.jpg") center center/cover no-repeat;
+      height: 80vh;
+      background: url("https://sessionsports.com/cdn/shop/products/peaceefoil_2048x_d7e91746-cf45-4352-b119-5acff29f4fa2.jpg?v=1629234592&width=1946") center center/cover no-repeat;
     }
-
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.4); /* Dark overlay to ensure text is readable */
+      background-color: rgba(0, 0, 0, 0.5); /* Darker overlay for better text visibility */
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     .hero-title {
-      font-size: 3rem; /* Adjust to match your design */
+      font-size: 3rem;
       text-align: center;
       line-height: 1.2;
-      font-weight: 700;
+      font-weight: 600;
       padding: 0 20px;
+      opacity: 0.85;
     }
 
-    /* WHO ARE WE */
-    .who-are-we {
+    /* FULL-WIDTH SECTIONS */
+    .full-width-section {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
+      width: 100%;
+      height: 500px; /* Fixed height for perfect alignment */
     }
 
-    .who-are-we .text-block {
-      flex: 1 1 400px;
-    }
-
-    .who-are-we .text-block h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .who-are-we .text-block p {
-      margin-bottom: 16px;
-      font-size: 1rem; /* Adjust font size */
-    }
-
-    .who-are-we .image-block {
-      flex: 1 1 300px;
+    .full-width-section .text-block {
+      width: 50%;
+      padding: 3rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      text-align: justify;
     }
 
-    /* OUR CONCEPT */
-    .our-concept {
-      display: flex;
-      flex-wrap: wrap-reverse;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .our-concept .text-block {
-      flex: 1 1 400px;
-    }
-
-    .our-concept .text-block h2 {
+    .full-width-section .text-block h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
-    .our-concept .text-block p,
-    .our-concept .text-block ul {
-      margin-bottom: 16px;
+    /* Lighter Font Weight for Paragraphs */
+    .full-width-section .text-block p {
       font-size: 1rem;
+      font-weight: 200; /* Now lighter */
+    }
+    
+    /* Lighter Font Weight for Paragraphs */
+    .full-width-section .text-block li {
+      font-size: 1rem;
+      font-weight: 200; /* Now lighter */
     }
 
-    .our-concept .text-block ul {
-      list-style: none;
-      padding-left: 0;
+    .full-width-section .image-block {
+      width: 50%;
+      height: 100%;
     }
 
-    .our-concept .text-block li {
-      margin-bottom: 8px;
+    .full-width-section .image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image fully fills its space */
     }
 
-    .our-concept .image-block.concept-image {
-      flex: 1 1 300px;
-      display: flex;
-      justify-content: center;
-    }
 
-    /* MAP SECTION */
-    .map-section {
-      text-align: center;
-      padding: 60px 0; /* Adjust spacing to match your design */
-    }
-
-    .map-section img {
-      border: 2px solid #fff; /* Optional, if it matches design */
-      max-width: 100%;
-      height: auto;
-    }
-
-        /* FOOTER */
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 1rem;
@@ -204,22 +159,42 @@
       color: #fff;
     }
 
-    /* RESPONSIVE MEDIA QUERIES */
+    /* RESPONSIVE ADJUSTMENTS */
     @media (max-width: 768px) {
       .hero-title {
         font-size: 2rem;
       }
-
-      .who-are-we,
-      .our-concept {
+      
+      .full-width-section {
         flex-direction: column;
+        height: auto;
+      }
+      
+      .full-width-section .text-block,
+      .full-width-section .image-block {
+        width: 100%;
+        height: auto;
+      }
+
+      .full-width-section .image-block img {
+        height: 300px; /* Adjust image height on mobile */
+      }
+
+      /* Reverse the second full-width-section order on mobile */
+      .full-width-section:nth-of-type(2) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    /* Additional media query for mid-range screens */
+    @media (max-width: 1024px) {
+      .full-width-section {
+        height: auto;
       }
     }
   </style>
 </head>
 <body>
-
-    
   <!-- HEADER + NAVIGATION -->
   <header>
     <nav>
@@ -242,15 +217,15 @@
     </div>
   </header>
 
-  <!-- INTRODUCTION: WHO ARE WE? -->
-  <section class="who-are-we container">
+  <!-- WHO ARE WE SECTION -->
+  <section class="full-width-section">
     <div class="text-block">
       <h2>Who are we?</h2>
       <p>
-        Rollntrip was founded by a water sports enthusiast who has spent a lot
+        <span style="color: #A9FCED;">Rollntrip</span> was founded by a water sports enthusiast who has spent a lot
         of time traveling and meeting local communities worldwide, always
         searching for new surfing spots.
-      </p>
+      </p><br>
       <p>
         That's why we are committed to bridging the gap between local experts
         and travelers, so everyone can discover new ways to enjoy the waves
@@ -258,34 +233,29 @@
       </p>
     </div>
     <div class="image-block">
-      <img src="surfboard.jpg" alt="Surfboard" />
+      <img src="https://i.ibb.co/93cNFWyS/surfboard-image.png" alt="Surfboard" />
     </div>
   </section>
 
-  <!-- OUR CONCEPT -->
-  <section class="our-concept container">
-    <div class="image-block concept-image">
-      <img src="surfing-lifestyle.jpg" alt="Surfing Lifestyle" />
+  <!-- OUR CONCEPT SECTION -->
+  <section class="full-width-section">
+    <div class="image-block">
+      <img src="https://i.ibb.co/YBf1NgVj/image-5.png" alt="Surfing Lifestyle" />
     </div>
     <div class="text-block">
       <h2>Our concept</h2>
       <p>
-        Rollntrip brings the thrill of e-foiling straight to Europe’s scenic
+        <span style="color: #A9FCED;">Rollntrip</span> brings the thrill of e-foiling straight to Europe’s scenic
         coastline—from Saint-Tropez and the French Riviera to the rest of the
         world.
-      </p>
+      </p><br>
       <ul>
-        <li><strong>We come to you</strong> – Ride at top beaches like Saint-Raphael, Cannes, or even your private villa.</li>
-        <li><strong>Book instantly</strong> – Scan a QR code on flyers or social media.</li>
-        <li><strong>Ride prime times</strong> – Morning & afternoon sessions.</li>
+        <li><strong><span style="color: #A9FCED;">🚚  We come to you</span></strong> – Ride where you are or at top beaches like Pampelonne, Port Grimaud & more.</li>
+        <li><strong>🗓️ Book easily</strong> – Scan a QR code on flyers available at almost every beach. Book instantly.</li>
+        <li><strong>🏄‍Flexible Ride Times</strong> – Morning & afternoon sessions.</li>
       </ul>
-      <p>We plan to expand further in 2025.</p>
+      <br><p>We plan to expand further in 2025.</p>
     </div>
-  </section>
-
-  <!-- MAP SECTION -->
-  <section class="map-section container">
-    <img src="map.jpg" alt="Map showing route along the French coastline" />
   </section>
 
   <!-- FOOTER -->
@@ -293,5 +263,10 @@
     &copy; 2025 RollnTrip
   </footer>
 
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
