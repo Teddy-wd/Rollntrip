@@ -93,6 +93,20 @@
       background: url("https://i.ibb.co/DPJDbq8M/image-2-2-2.png") center center/cover no-repeat;
     }
     
+    .hero-title {
+      position: absolute;
+      inset: 0;
+      font-size: 3rem;
+      text-align: center;
+      line-height: 1.2;
+      font-weight: 600;
+      padding: 0 20px;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     /* FULL-WIDTH SECTIONS */
     .full-width-section {
       display: flex;
@@ -138,6 +152,7 @@
       object-fit: cover; /* Ensures the image fully fills its space */
     }
 
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -148,6 +163,10 @@
 
     /* RESPONSIVE ADJUSTMENTS */
     @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
       .full-width-section {
         flex-direction: column;
         height: auto;
@@ -195,7 +214,9 @@
 
   <!-- HERO SECTION -->
   <header class="hero">
-    <!-- Removed hero title -->
+    <div class="hero-overlay">
+      <h1 class="hero-title">More than a one-time ride,<br/>a wild way to live.</h1>
+    </div>
   </header>
 
   <!-- WHO ARE WE SECTION -->
