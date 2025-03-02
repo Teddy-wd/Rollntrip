@@ -288,6 +288,98 @@
       background-color: #000;
       color: #fff;
     }
+
+/* Apply Sora font */
+body {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contact Page Styles */
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+
+.contact-content {
+    width: 50%;
+    text-align: center;
+    padding: 5rem;
+}
+
+.contact-content h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contact-name {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.contact-method {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 1rem;
+}
+
+.contact-email, .contact-whatsapp {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #A9FCED;
+    text-decoration: none;
+    margin-top: 0.3rem;
+}
+
+.contact-email:hover, .contact-whatsapp:hover {
+    color: #fff;
+}
+
+/* Image Section */
+.contact-image {
+    width: 50%;
+    height: 100%;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-content {
+        width: 100%;
+        padding: 3rem;
+    }
+
+    .contact-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-image img {
+        height: auto;
+    }
+}
+
   </style>
 
   </style>
