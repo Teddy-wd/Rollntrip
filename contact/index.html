@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Roll'n'Trip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Roll'n'Trip Logo" />
+        </a>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Book a session</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contact-container">
+    <div class="contact-content">
+        <h2>Contact us</h2>
+        <p class="contact-name">Teddy Defrel</p>
+        <p class="contact-method">via Email Address</p>
+        <a href="mailto:teddy@rollntrip.com" class="contact-email">teddy@rollntrip.com</a>
+        <p class="contact-method">or WhatsApp</p>
+        <a href="https://wa.me/4367846036999" class="contact-whatsapp">+43 678 460 36 999</a>
+    </div>
+    <div class="contact-image">
+        <img src="Group 10.png" alt="Beach Image">
+    </div>
+</section>
+
+<footer>
+    &copy; 2025 RollnTrip
+</footer>
+
+<script>
+    document.getElementById("menuToggle").addEventListener("click", function() {
+        document.getElementById("navLinks").classList.toggle("active");
+    });
+</script>
+
+</body>
+</html>
