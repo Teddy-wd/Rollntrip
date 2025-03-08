@@ -16,19 +16,28 @@
   
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="https://rollntrip.com/" class="logo">
-        <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Logo Roll'n'Trip" />
-      </a>
-      <div class="menu-toggle" id="menuToggle">☰</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="https://rollntrip.com/">Réserver une session</a></li>
-        <li><a href="https://rollntrip.vercel.app/about-us">À propos</a></li>
-        <li><a href="https://rollntrip.vercel.app/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <a href="https://rollntrip.com/" class="logo">
+      <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Logo Roll'n'Trip" />
+    </a>
+    
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://rollntrip.com/" style="color: #A9FCED;">Réserver une session</a></li>
+      <li><a href="https://rollntrip.vercel.app/about-us">À propos</a></li>
+      <li><a href="https://rollntrip.vercel.app/contact">Contact</a></li>
+      
+      <!-- Drapeaux de langue -->
+      <li class="language-flags">
+        <a href="https://rollntrip.vercel.app/fr" title="Français">🇫🇷</a>
+        <a href="?lang=en" title="English">🇬🇧</a>
+        <a href="?lang=de" title="Deutsch">🇩🇪</a>
+      </li>
+    </ul>
+  </nav>
+</header>
     
   <section class="hero">
     <div class="hero-content">
@@ -37,7 +46,7 @@
     <div class="down-arrow">&#x2193;</div>
   </section>
   
-  <!-- Section Points de Rencontre -->
+  <!-- Section des points de rendez-vous -->
   <section class="meeting-points">
     <div class="meeting-point">
       <button class="meeting-button" onclick="toggleCalendly(this, 'port-grimaud')">Session à Port Grimaud</button>
@@ -52,7 +61,7 @@
       <div class="calendly-widget"></div>
     </div>
     <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-d')">Session à Saint Aygulf</button>
+      <button class="meeting-button" onclick="toggleCalendly(this, 'point-d')">Session à Saint-Aygulf</button>
       <div class="calendly-widget"></div>
     </div>
     <div class="meeting-point">
@@ -70,22 +79,27 @@
     &copy; 2025 RollnTrip
   </footer>
   
-  <!-- Script du Widget Calendly -->
+  <!-- Script Calendly -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
   
   <!-- JavaScript pour Calendly & Menu Mobile -->
   <script>
     function toggleCalendly(button, location) {
+      // Récupérer le conteneur Calendly situé juste en dessous du bouton cliqué
       let widgetContainer = button.nextElementSibling;
+      // Vérifier si ce widget est déjà ouvert
       let isCurrentlyOpen = widgetContainer.style.display === "block";
       
+      // Fermer tous les widgets Calendly
       document.querySelectorAll('.calendly-widget').forEach(widget => {
         widget.innerHTML = "";
         widget.style.display = "none";
       });
       
+      // Si le widget cliqué était déjà ouvert, ne rien faire de plus (il reste fermé)
       if (isCurrentlyOpen) return;
       
+      // Préparer l'URL (avec bannière de cookies masquée)
       let urls = {
         "port-grimaud": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
         "point-b": "https://calendly.com/booking-rollntrip/at-la-nartelle?hide_gdpr_banner=1",
@@ -95,9 +109,11 @@
         "point-f": "https://calendly.com/point-f/30min?hide_gdpr_banner=1"
       };
       
+      // Afficher l'animation de plage pendant le chargement
       widgetContainer.innerHTML = `<div class="beach-animation">🏖</div>`;
       widgetContainer.style.display = "block";
       
+      // Initialiser le widget Calendly en ligne avec le script officiel
       Calendly.initInlineWidget({
         url: urls[location],
         parentElement: widgetContainer,
@@ -105,6 +121,7 @@
         utm: {}
       });
       
+      // Supprimer l'animation de plage après un court délai
       setTimeout(() => {
         let anim = widgetContainer.querySelector('.beach-animation');
         if (anim) anim.style.display = "none";
