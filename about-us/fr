@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollntrip - À Propos</title>
+  
+  <!-- Autres -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="https://i.ibb.co/4RNJ4STy/image-6-1.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- EN-TÊTE + NAVIGATION -->
+  <header>
+    <nav>
+      <a href="https://rollntrip.com/" class="logo">
+        <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Logo Roll'n'Trip" />
+      </a>
+      
+      <div class="menu-toggle" id="menuToggle">☰</div>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="https://rollntrip.com/">Réserver une session</a></li>
+        <li><a href="https://rollntrip.vercel.app/about-us" style="color: #A9FCED;">À propos</a></li>
+        <li><a href="https://rollntrip.vercel.app/contact">Contact</a></li>
+        
+        <!-- Drapeaux de langue -->
+        <li class="language-flags">
+          <a href="?lang=fr" title="Français">🇫🇷</a>
+          <a href="?lang=en" title="Anglais">🇬🇧</a>
+          <a href="?lang=de" title="Allemand">🇩🇪</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- SECTION HÉRO -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Plus qu'une simple session,<br/>une nouvelle façon de vivre.</h1>
+    </div>
+  </header>
+
+  <!-- QUI SOMMES-NOUS ? -->
+  <section class="full-width-section">
+    <div class="text-block">
+      <h2>Qui sommes-nous ?</h2>
+      <p>
+        <span style="color: #A9FCED;">Rollntrip</span> a été fondé par un passionné de sports nautiques ayant voyagé et rencontré 
+        de nombreuses communautés à travers le monde. Aujourd'hui il concentre sa passion pour vous offrir une expérience nautique unique.
+      </p><br>
+      <p>
+        C'est pourquoi nous nous engageons à connecter des experts nautiques locaux et les voyageurs afin que chacun puisse 
+        découvrir de nouvelles façons de profiter des vagues et vivre des moments inoubliables.
+      </p>
+    </div>
+    <div class="image-block">
+      <img src="https://i.ibb.co/93cNFWyS/surfboard-image.png" alt="Planche de surf" />
+    </div>
+  </section>
+
+  <!-- NOTRE CONCEPT -->
+  <section class="full-width-section">
+    <div class="image-block">
+      <img src="https://i.ibb.co/YBf1NgVj/image-5.png" alt="Style de vie du surf" />
+    </div>
+    <div class="text-block">
+      <h2>Notre concept</h2>
+      <p>
+        <span style="color: #A9FCED;">Rollntrip</span> apporte l'excitation du e-foiling directement sur les plus belles côtes d'Europe, 
+        de Saint-Tropez et la Côte d'Azur au reste du monde.
+      </p><br>
+      <ul>
+        <li><strong><span style="color: #A9FCED;">🚚 Nous venons à vous</span></strong> – Profitez d'une session où vous voulez ! Parmi les plus belles plages comme Pampelonne, Port Grimaud et bien d'autres.</li>
+        <li><strong>🗓️ Réservation facile</strong> – Scannez un QR code sur nos flyers disponibles sur la plupart des plages et réservez en un instant.</li>
+        <li><strong>🏄‍ Horaires flexibles</strong> – Sessions disponibles matin et après-midi.</li>
+      </ul>
+      <br><p>Nous prévoyons d'étendre notre service à plus de plages en 2025.</p>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    &copy; 2025 RollnTrip
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
