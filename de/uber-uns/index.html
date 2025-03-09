@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rollntrip - Über uns</title>
+  
+  <!-- Autres -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="https://i.ibb.co/4RNJ4STy/image-6-1.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      color: #fff;
+      background-color: #000;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* EN-TÊTE & NAVIGATION */
+    header {
+      position: relative;
+      width: 100%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .nav-links li a:hover {
+      color: #A9FCED;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #000;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* SECTION HÉRO */
+    .hero {
+      position: static;
+      height: 80vh;
+      background: url("https://i.ibb.co/XZDsGtLq/image-2-3.png") center center/cover no-repeat;
+    }
+    
+    .hero-title {
+      position: absolute;
+      inset: 0;
+      font-size: 3rem;
+      text-align: center;
+      line-height: 1.2;
+      font-weight: 600;
+      padding: 0 20px;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SECTIONS PLEINE LARGEUR */
+    .full-width-section {
+      display: flex;
+      width: 100%;
+      height: 500px;
+    }
+
+    .full-width-section .text-block {
+      width: 50%;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: justify;
+    }
+
+    .full-width-section .text-block h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .full-width-section .text-block p,
+    .full-width-section .text-block li {
+      font-size: 1rem;
+      font-weight: 200;
+    }
+
+    .full-width-section .image-block {
+      width: 50%;
+      height: 100%;
+    }
+
+    .full-width-section .image-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* PIED DE PAGE */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .full-width-section {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .full-width-section .text-block,
+      .full-width-section .image-block {
+        width: 100%;
+        height: auto;
+      }
+
+      .full-width-section .image-block img {
+        height: 300px;
+      }
+
+      .full-width-section:nth-of-type(2) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .full-width-section {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EN-TÊTE + NAVIGATION -->
+<header>
+  <nav>
+    <a href="https://rollntrip.com/" class="logo">
+      <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Roll'n'Trip Logo" />
+    </a>
+    
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://rollntrip.com/de">Session buchen</a></li>
+      <li><a href="https://rollntrip.vercel.app/de/uber-uns" style="color: #A9FCED;">Über uns</a></li>
+      <li><a href="https://rollntrip.vercel.app/de/kontakt">Kontakt</a></li>
+      
+      <!-- Language Flags -->
+      <li class="language-flags">
+        <a href="https://rollntrip.vercel.app/fr/qui-sommes-nous" title="Français">🇫🇷</a>
+        <a href="https://rollntrip.vercel.app/about-us" title="English">🇬🇧</a>
+        <a href="https://rollntrip.vercel.app/de/uber-uns" title="Deutsch">🇩🇪</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+  <!-- SECTION HÉRO -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Mehr als nur eine Session,<br/>eine neue Art zu erleben.</h1>
+    </div>
+  </header>
+
+  <!-- QUI SOMMES-NOUS ? -->
+  <section class="full-width-section">
+    <div class="text-block">
+      <h2>Über uns</h2>
+      <p>
+        <span style="color: #A9FCED;">Rollntrip</span> entstand aus der Leidenschaft eines begeisterten Wassersportlers,
+        der auf seinen Reisen verschiedenste Wassersportarten – darunter auch das E-Foiling – für sich entdeckte.
+      </p><br>
+      <p>
+        Heute verfolgt Rollntrip das Ziel, diesen einzigartigen Sport für jeden zugänglich zu machen, um gemeinsam neue Wege zu finden, 
+        die Wellen zu genießen und unvergessliche Erlebnisse auf dem Wasser zu schaffen.
+      </p>
+    </div>
+    <div class="image-block">
+      <img src="https://i.ibb.co/93cNFWyS/surfboard-image.png" alt="Planche de surf" />
+    </div>
+  </section>
+
+  <!-- NOTRE CONCEPT -->
+  <section class="full-width-section">
+    <div class="image-block">
+      <img src="https://i.ibb.co/YBf1NgVj/image-5.png" alt="Style de vie du surf" />
+    </div>
+    <div class="text-block">
+      <h2>Notre concept</h2>
+      <p>
+        <span style="color: #A9FCED;">Rollntrip</span> bringt das einzigartige E-Foiling-Erlebnis direkt an die 
+        schönsten Strände der Côte d’Azur – von Saint-Tropez über Port-Grimaud bis nach Fréjus, und schon bald in die ganze Welt.
+      </p><br>
+      <p>Tatsächlich planen wir, unser Angebot im Jahr 2025 noch weiter auszubauen.</p>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    &copy; 2025 RollnTrip
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menuToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
