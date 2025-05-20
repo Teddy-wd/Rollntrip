@@ -177,8 +177,16 @@
       "90": 219
     };
     priceElement.textContent = `€${pricing[duration]}`;
+
+    // Hide Calendly embed and clear widget when duration is changed
+    const calendlyContainer = document.getElementById("calendly-container");
+    const calendlyWidget = document.getElementById("calendly-inline-widget");
+
+    calendlyContainer.style.display = "none";
+    calendlyWidget.innerHTML = "";
   }
 </script>
+
 
   
    <!-- FOOTER -->
