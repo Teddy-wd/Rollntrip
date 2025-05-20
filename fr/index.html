@@ -46,88 +46,168 @@
     <div class="down-arrow">&#x2193;</div>
   </section>
   
-  <!-- Section des points de rendez-vous -->
-  <section class="meeting-points">
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'port-grimaud')">Session à Port Grimaud</button>
-      <div class="calendly-widget"></div>
-    </div>
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-b')">Session à La Nartelle</button>
-      <div class="calendly-widget"></div>
-    </div>
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-c')">Session à Pampelonne</button>
-      <div class="calendly-widget"></div>
-    </div>
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-d')">Session à Saint-Aygulf</button>
-      <div class="calendly-widget"></div>
-    </div>
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-e')">Session à Gros Pin</button>
-      <div class="calendly-widget"></div>
-    </div>
-    <div class="meeting-point">
-      <button class="meeting-button" onclick="toggleCalendly(this, 'point-f')">Session à La Gaillarde</button>
-      <div class="calendly-widget"></div>
-    </div>
-  </section>
+   <!-- eFoil Booking Section (Clean + Integrated) -->
+<section class="session-booking" style="padding: 3rem 1rem; max-width: 600px; margin: 0 auto;">
+  <h2 class="booking-title">Nous venons à vous !</h2>
+
+  <div class="form-group">
+    <label for="location">Emplacement de la plage</label>
+    <select id="location" class="booking-input">
+      <option value="" disabled selected>Choisir une plage</option>
+      <option value="Pampelonne Beach">Plage de Pampelonne</option>
+      <option value="Tahiti Beach">Tahiti Beach</option>
+      <option value="Nikki Beach">Nikki Beach</option>
+      <option value="Escalet Beach">Plage del'Escalet</option>
+      <option value="Gigaro Beach">Plage de Gigaro</option>
+      <option value="Cavalaire-sur-Mer">Cavalaire-sur-Mer</option>
+      <option value="La Croix-Valmer">La Croix-Valmer</option>
+      <option value="Les Issambres">Les Issambres</option>
+      <option value="Sainte-Maxime">Sainte-Maxime</option>
+      <option value="Fréjus">Fréjus</option>
+      <option value="Saint-Raphaël">Saint-Raphaël</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="duration">Durée de la session</label>
+    <select id="duration" class="booking-input" onchange="updatePrice()">
+      <option value="30">30 min</option>
+      <option value="60">60 min</option>
+      <option value="90">90 min</option>
+    </select>
+  </div>
+
+  <div class="price-display" id="price">€79</div>
+
+<button class="book-button" onclick="showCalendly()">Réserver une date</button>
+<div id="calendly-container" style="margin-top: 2rem; display: none;">
+  <div id="calendly-inline-widget" style="min-width:320px;height:630px;"></div>
+</div>
+
+</section>
+
+<style>
+  .booking-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #000, #777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .form-group {
+    margin-bottom: 1.8rem;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #000;
+  }
+
+  .booking-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-family: 'Sora', sans-serif;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+  }
+
+  .booking-input:focus {
+    outline: none;
+    border-color: #000;
+  }
+
+  .price-display {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #000, #777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .book-button {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #000, #777);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Sora', sans-serif;
+    transition: background 0.3s ease;
+  }
+
+  .book-button:hover {
+    background: #000;
+  }
+
+  @media (max-width: 480px) {
+    .session-booking {
+      padding: 2rem 1rem;
+    }
+
+    .booking-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>
   
-   <!-- PIED DE PAGE -->
+<script>
+  function updatePrice() {
+    const duration = document.getElementById("duration").value;
+    const priceElement = document.getElementById("price");
+    const pricing = {
+      "30": 79,
+      "60": 159,
+      "90": 219
+    };
+    priceElement.textContent = `€${pricing[duration]}`;
+  }
+</script>
+
+  
+   <!-- FOOTER -->
   <footer>
     &copy; 2025 RollnTrip
   </footer>
   
-  <!-- Script Calendly -->
+  <!-- Calendly Widget Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
   
-  <!-- JavaScript pour Calendly & Menu Mobile -->
-  <script>
-    function toggleCalendly(button, location) {
-      // Récupérer le conteneur Calendly situé juste en dessous du bouton cliqué
-      let widgetContainer = button.nextElementSibling;
-      // Vérifier si ce widget est déjà ouvert
-      let isCurrentlyOpen = widgetContainer.style.display === "block";
-      
-      // Fermer tous les widgets Calendly
-      document.querySelectorAll('.calendly-widget').forEach(widget => {
-        widget.innerHTML = "";
-        widget.style.display = "none";
-      });
-      
-      // Si le widget cliqué était déjà ouvert, ne rien faire de plus (il reste fermé)
-      if (isCurrentlyOpen) return;
-      
-      // Préparer l'URL (avec bannière de cookies masquée)
-      let urls = {
-        "port-grimaud": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
-        "point-b": "https://calendly.com/booking-rollntrip/at-la-nartelle?hide_gdpr_banner=1",
-        "point-c": "https://calendly.com/booking-rollntrip/at-pampelonne?hide_gdpr_banner=1",
-        "point-d": "https://calendly.com/booking-rollntrip/at-saint-aygulf?hide_gdpr_banner=1",
-        "point-e": "https://calendly.com/booking-rollntrip/at-gros-pin?hide_gdpr_banner=1",
-        "point-f": "https://calendly.com/booking-rollntrip/at-la-gaillarde?hide_gdpr_banner=1"
-      };
-      
-      // Afficher l'animation de plage pendant le chargement
-      widgetContainer.innerHTML = `<div class="beach-animation">🏖</div>`;
-      widgetContainer.style.display = "block";
-      
-      // Initialiser le widget Calendly en ligne avec le script officiel
+<script>
+  function showCalendly() {
+    const container = document.getElementById("calendly-container");
+    const widget = document.getElementById("calendly-inline-widget");
+
+    // Only load once
+    if (!widget.innerHTML.trim()) {
       Calendly.initInlineWidget({
-        url: urls[location],
-        parentElement: widgetContainer,
-        prefill: {},
-        utm: {}
+        url: 'https://calendly.com/booking-rollntrip/at-la-gaillarde?hide_gdpr_banner=1&primary_color=000000',
+        parentElement: widget
       });
-      
-      // Supprimer l'animation de plage après un court délai
-      setTimeout(() => {
-        let anim = widgetContainer.querySelector('.beach-animation');
-        if (anim) anim.style.display = "none";
-      }, 800);
     }
-  </script>
+
+    container.style.display = "block";
+    // Optional: Scroll to the widget
+    container.scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
   
   <script>
     document.getElementById("menuToggle").addEventListener("click", function() {
