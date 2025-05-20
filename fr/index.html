@@ -193,17 +193,26 @@
   function showCalendly() {
     const container = document.getElementById("calendly-container");
     const widget = document.getElementById("calendly-inline-widget");
+    const duration = document.getElementById("duration").value;
 
-    // Only load once
-    if (!widget.innerHTML.trim()) {
-      Calendly.initInlineWidget({
-        url: 'https://calendly.com/booking-rollntrip/efoil?hide_gdpr_banner=1&primary_color=000000',
-        parentElement: widget
-      });
-    }
+    // Define URLs based on duration
+    const calendlyURLs = {
+      "30": "https://calendly.com/booking-rollntrip/30min?hide_gdpr_banner=1&primary_color=000000",
+      "60": "https://calendly.com/booking-rollntrip/60min?hide_gdpr_banner=1&primary_color=000000",
+      "90": "https://calendly.com/booking-rollntrip/90min?hide_gdpr_banner=1&primary_color=000000"
+    };
+
+    const selectedURL = calendlyURLs[duration] || calendlyURLs["30"]; // Fallback to 30min if nothing selected
+
+    // Clear and reset widget
+    widget.innerHTML = "";
+
+    Calendly.initInlineWidget({
+      url: selectedURL,
+      parentElement: widget
+    });
 
     container.style.display = "block";
-    // Optional: Scroll to the widget
     container.scrollIntoView({ behavior: "smooth" });
   }
 </script>
