@@ -50,23 +50,28 @@
 <section class="session-booking" style="padding: 3rem 1rem; max-width: 600px; margin: 0 auto;">
   <h2 class="booking-title">Nous venons à vous !</h2>
 
-  <div class="form-group">
-    <label for="location">Dites-nous où vous êtes</label>
-    <select id="location" class="booking-input">
-      <option value="" disabled selected>Choisir une plage</option>
-      <option value="Pampelonne Beach">Plage de Pampelonne</option>
-      <option value="Tahiti Beach">Tahiti Beach</option>
-      <option value="Nikki Beach">Nikki Beach</option>
-      <option value="Escalet Beach">Plage del'Escalet</option>
-      <option value="Gigaro Beach">Plage de Gigaro</option>
-      <option value="Cavalaire-sur-Mer">Cavalaire-sur-Mer</option>
-      <option value="La Croix-Valmer">La Croix-Valmer</option>
-      <option value="Les Issambres">Les Issambres</option>
-      <option value="Sainte-Maxime">Sainte-Maxime</option>
-      <option value="Fréjus">Fréjus</option>
-      <option value="Saint-Raphaël">Saint-Raphaël</option>
-    </select>
-  </div>
+<div class="form-group">
+  <label for="city">Dites-nous où</label>
+  <select id="city" class="booking-input" onchange="populateBeaches()">
+    <option value="" disabled selected>Sélectionnez une ville</option>
+    <option value="frejus">Fréjus</option>
+    <option value="saint-raphael">Saint-Raphaël</option>
+    <option value="les-issambres">Les Issambres</option>
+    <option value="sainte-maxime">Sainte-Maxime</option>
+    <option value="saint-tropez">Saint-Tropez</option>
+    <option value="gassin">Gassin</option>
+    <option value="grimaud">Grimaud</option>
+    <option value="la-croix-valmer">La Croix-Valmer</option>
+    <option value="cavalaire">Cavalaire-sur-Mer</option>
+  </select>
+</div>
+
+<div class="form-group" id="beachContainer" style="display: none;">
+  <label for="beach">Choisissez votre plage</label>
+  <select id="beach" class="booking-input">
+    <option value="" disabled selected>Sélectionnez une plage</option>
+  </select>
+</div>
 
   <div class="form-group">
     <label for="duration">Durée de la session</label>
