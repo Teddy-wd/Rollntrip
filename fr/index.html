@@ -230,6 +230,42 @@
   }
 </script>
 
+  <script>
+  const beachOptions = {
+    "frejus": ["Plage de Fréjus", "Plage de Saint-Aygulf"],
+    "saint-raphael": ["Plage du Veillat", "Plage de la Baumette", "Calanque du Petit Caneiret"],
+    "les-issambres": ["Plage de la Gaillarde", "Plage de San Peïre", "Calanque de Tardieu"],
+    "sainte-maxime": ["Plage de la Croisette", "Plage des Éléphants", "Plage de la Nartelle"],
+    "saint-tropez": ["Plage de Pampelonne", "Plage des Salins", "Plage de la Bouillabaisse"],
+    "gassin": ["Plage du Treizain", "Plage de la Moune", "Plage de Bertaud-Marines"],
+    "grimaud": ["Plage de Port Grimaud", "Plage des Cigales", "Plage de Saint-Pons-les-Mûres"],
+    "la-croix-valmer": ["Plage du Débarquement", "Plage de Gigaro", "Plage de Sylvabelle"],
+    "cavalaire": ["Plage du Centre-Ville", "Plage de Pardigon", "Plage de Bonporteau"]
+  };
+
+  function populateBeaches() {
+    const city = document.getElementById("city").value;
+    const beachSelect = document.getElementById("beach");
+    const beachContainer = document.getElementById("beachContainer");
+
+    // Reset beach options
+    beachSelect.innerHTML = `<option value="" disabled selected>Select a beach</option>`;
+
+    if (beachOptions[city]) {
+      beachOptions[city].forEach(beach => {
+        const option = document.createElement("option");
+        option.value = beach;
+        option.textContent = beach;
+        beachSelect.appendChild(option);
+      });
+
+      // Show beach selection
+      beachContainer.style.display = "block";
+    } else {
+      beachContainer.style.display = "none";
+    }
+  }
+</script>
   
   <script>
     document.getElementById("menuToggle").addEventListener("click", function() {
