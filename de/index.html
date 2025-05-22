@@ -50,23 +50,28 @@
 <section class="session-booking" style="padding: 3rem 1rem; max-width: 600px; margin: 0 auto;">
   <h2 class="booking-title">Wir kommen zu euch!</h2>
 
-  <div class="form-group">
-    <label for="location">Treffpunkt am Strand</label>
-    <select id="location" class="booking-input">
-      <option value="" disabled selected>Wähle einen Strand</option>
-      <option value="Pampelonne Beach">Pampelonne Beach</option>
-      <option value="Tahiti Beach">Tahiti Beach</option>
-      <option value="Nikki Beach">Nikki Beach</option>
-      <option value="Escalet Beach">Escalet Beach</option>
-      <option value="Gigaro Beach">Gigaro Beach</option>
-      <option value="Cavalaire-sur-Mer">Cavalaire-sur-Mer</option>
-      <option value="La Croix-Valmer">La Croix-Valmer</option>
-      <option value="Les Issambres">Les Issambres</option>
-      <option value="Sainte-Maxime">Sainte-Maxime</option>
-      <option value="Fréjus">Fréjus</option>
-      <option value="Saint-Raphaël">Saint-Raphaël</option>
-    </select>
-  </div>
+<div class="form-group">
+  <label for="city">Sag uns, wo</label>
+  <select id="city" class="booking-input" onchange="populateBeaches()">
+    <option value="" disabled selected>Stadt auswählen</option>
+    <option value="frejus">Fréjus</option>
+    <option value="saint-raphael">Saint-Raphaël</option>
+    <option value="les-issambres">Les Issambres</option>
+    <option value="sainte-maxime">Sainte-Maxime</option>
+    <option value="saint-tropez">Saint-Tropez</option>
+    <option value="gassin">Gassin</option>
+    <option value="grimaud">Grimaud</option>
+    <option value="la-croix-valmer">La Croix-Valmer</option>
+    <option value="cavalaire">Cavalaire-sur-Mer</option>
+  </select>
+</div>
+
+<div class="form-group" id="beachContainer" style="display: none;">
+  <label for="beach">Treffpunkt am Strand</label>
+  <select id="beach" class="booking-input">
+    <option value="" disabled selected>Strand auswählen</option>
+  </select>
+</div>
 
   <div class="form-group">
     <label for="duration">Dauer der eFoil-Session</label>
@@ -224,7 +229,42 @@
   }
 </script>
 
+<script>
+  const beachOptions = {
+    "frejus": ["Plage de Fréjus", "Plage de Saint-Aygulf"],
+    "saint-raphael": ["Plage du Veillat", "Plage de la Baumette", "Calanque du Petit Caneiret"],
+    "les-issambres": ["Plage de la Gaillarde", "Plage de San Peïre", "Calanque de Tardieu"],
+    "sainte-maxime": ["Plage de la Croisette", "Plage des Éléphants", "Plage de la Nartelle"],
+    "saint-tropez": ["Plage de Pampelonne", "Plage des Salins", "Plage de la Bouillabaisse"],
+    "gassin": ["Plage du Treizain", "Plage de la Moune", "Plage de Bertaud-Marines"],
+    "grimaud": ["Plage de Port Grimaud", "Plage des Cigales", "Plage de Saint-Pons-les-Mûres"],
+    "la-croix-valmer": ["Plage du Débarquement", "Plage de Gigaro", "Plage de Sylvabelle"],
+    "cavalaire": ["Plage du Centre-Ville", "Plage de Pardigon", "Plage de Bonporteau"]
+  };
 
+  function populateBeaches() {
+    const city = document.getElementById("city").value;
+    const beachSelect = document.getElementById("beach");
+    const beachContainer = document.getElementById("beachContainer");
+
+    // Reset beach options
+    beachSelect.innerHTML = `<option value="" disabled selected>Select a beach</option>`;
+
+    if (beachOptions[city]) {
+      beachOptions[city].forEach(beach => {
+        const option = document.createElement("option");
+        option.value = beach;
+        option.textContent = beach;
+        beachSelect.appendChild(option);
+      });
+
+      // Show beach selection
+      beachContainer.style.display = "block";
+    } else {
+      beachContainer.style.display = "none";
+    }
+  }
+</script>
   
   <script>
     document.getElementById("menuToggle").addEventListener("click", function() {
