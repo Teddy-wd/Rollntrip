@@ -45,6 +45,32 @@
     </div>
     <div class="down-arrow">&#x2193;</div>
   </section>
+
+  <!-- ▸▸ DEFERRED IMAGE STRIP ▸▸ -->
+<div id="imageStripPlaceholder"
+     style="height:clamp(104px,12.5vw,144px)"></div>
+
+<template id="imageStripTpl">
+  <section class="image-strip" aria-label="Sample sessions">
+    <div class="strip-inner">
+      <figure class="tile"><img data-src="https://www.boatrentalsarizona.com/wp-content/uploads/2023/01/Electric-Foil.jpg"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0527/1358/6888/files/future_JG_2873_0099.jpg?v=1688945319" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/articles/Top-6-eFoil-Tricks.jpg?v=1736194170&width=1920"     alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://www.boatrentalsarizona.com/wp-content/uploads/2023/01/Electric-Foil.jpg"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0527/1358/6888/files/future_JG_2873_0099.jpg?v=1688945319" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/articles/Top-6-eFoil-Tricks.jpg?v=1736194170&width=1920"     alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://www.boatrentalsarizona.com/wp-content/uploads/2023/01/Electric-Foil.jpg"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0527/1358/6888/files/future_JG_2873_0099.jpg?v=1688945319" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/articles/Top-6-eFoil-Tricks.jpg?v=1736194170&width=1920"     alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://www.boatrentalsarizona.com/wp-content/uploads/2023/01/Electric-Foil.jpg"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0527/1358/6888/files/future_JG_2873_0099.jpg?v=1688945319" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/articles/Top-6-eFoil-Tricks.jpg?v=1736194170&width=1920"     alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://www.boatrentalsarizona.com/wp-content/uploads/2023/01/Electric-Foil.jpg"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0527/1358/6888/files/future_JG_2873_0099.jpg?v=1688945319" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/articles/Top-6-eFoil-Tricks.jpg?v=1736194170&width=1920"     alt="Cruising"></figure>
+    </div>
+  </section>
+</template>
   
  <!-- eFoil Booking Section (Clean + Integrated) -->
 <section class="session-booking" style="padding: 3rem 1rem; max-width: 600px; margin: 0 auto;">
@@ -272,5 +298,32 @@
       document.getElementById("navLinks").classList.toggle("active");
     });
   </script>
+  <script>
+/* lazy-insert the strip when it’s ~200 px away */
+window.addEventListener('load', () => {
+  const ph  = document.getElementById('imageStripPlaceholder');
+  const tpl = document.getElementById('imageStripTpl');
+
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+
+    /* 1 | inject the real HTML */
+    ph.replaceWith(tpl.content.cloneNode(true));
+
+    /* 2 | swap data-src → src so images start downloading (low priority) */
+    document.querySelectorAll('.image-strip img').forEach(img => {
+      img.loading       = 'lazy';
+      img.decoding      = 'async';
+      img.fetchPriority = 'low';   // Chrome 115+; ignored elsewhere
+      img.src           = img.dataset.src;
+    });
+
+    io.disconnect();               // clean-up
+  }, { rootMargin: '200px' });     // preload a little before it appears
+
+  io.observe(ph);
+});
+</script>
+  
 </body>
 </html>
