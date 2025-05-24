@@ -380,6 +380,42 @@ body {
     }
 }
 
+/* Image Section */
+.contact-image {
+    width: 50%;
+    height: 100%;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-content {
+        width: 100%;
+        padding: 3rem;
+    }
+
+    .contact-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-image img {
+        height: auto;
+    }
+}
+
   </style>
 
   </style>
