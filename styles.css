@@ -380,6 +380,55 @@ body {
     }
 }
 
+/* --- sizing constants ------------------------------------- */
+:root {
+  /* square size can stay fluid; tweak if you need smaller/larger tiles */
+  --tile-size: clamp(104px, 12.5vw, 144px);
+}
+
+/* --- outer wrapper ---------------------------------------- */
+.image-strip {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.image-strip::-webkit-scrollbar { display: none; }
+
+/* --- track that holds the images -------------------------- */
+.strip-inner {
+  display: flex;
+  gap: 0;              /* ← NO SPACE between tiles            */
+  padding: 0;          /* ← NO TOP/BOTTOM padding             */
+  scroll-snap-type: x mandatory;
+}
+
+/* --- individual tiles ------------------------------------- */
+.tile {
+  flex: 0 0 var(--tile-size);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  scroll-snap-align: start;
+  position: relative;
+  /* no border, no radius, no margin */
+}
+
+/* optional hover pop (delete if you want zero motion) */
+@media (hover: hover) {
+  .tile { transition: transform .25s ease; }
+  .tile:hover { transform: scale(1.04); }
+}
+
+/* --- images ----------------------------------------------- */
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;          /* just in case the UA stylesheet adds one */
+  loading: lazy;
+  decoding: async;
+}
+
   </style>
 
   </style>
