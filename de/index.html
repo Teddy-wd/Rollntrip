@@ -38,6 +38,31 @@
     </ul>
   </nav>
 </header>
+
+    <!-- ▸▸ DEFERRED IMAGE STRIP ▸▸ -->
+<div id="imageStripPlaceholder"
+     style="height:clamp(104px,12.5vw,144px)"></div>
+
+<template id="imageStripTpl">
+  <section class="image-strip" aria-label="Sample sessions">
+    <div class="strip-inner">
+      <figure class="tile"><img data-src="https://www.thefoilingmagazine.com/wp-content/uploads/2023/03/Fliteboard-Flitecell-Nano-Lifestyle.jpg" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://insideguide.co.za/cape-town/app/uploads/2023/02/efoil-surfing.webp" alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://sealectric.de/wp-content/smush-webp/2023/11/FliteBoard_D2_3276-scaled.jpg.webp"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0090/4042/files/flite_5_2048x2048.png?v=1602894930" alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://manofmany.com/_next/image?url=https%3A%2F%2Fapi.manofmany.com%2Fwp-content%2Fuploads%2F2023%2F05%2F2-5.jpg&w=1200&q=75" alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.getyourguide.com/img/tour/373df8db1063aa857faa93fc9b98a54c8dd80753147b4fe9f1422f8a656d33ad.jpeg/145.jpg" alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://cdn.getyourguide.com/img/tour/b90a681556d428c2d9b129ed8703a5d581ea9b47cb676a99c8aeb7ac44119f5d.jpeg/145.jpg" alt="Taking off"></figure>
+      <figure class="tile"><img data-src="https://motosurfing.com/upload/iblock/3bd/qlum4zzx6qhprdx58avvsnmo4hvh70gf.jpg" alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://cdn.shopify.com/s/files/1/0525/8785/6038/files/Flite_AIR_Evolving_to_PRO_blog_image_5.jpg?v=1708903534" alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://img.getmyboat.com/images/64569da56aee6/-processed.jpeg" alt="Cruising"></figure> 
+      <figure class="tile"><img data-src="https://www.marinebusinessnews.com.au/wp-content/uploads/2023/09/Fliteboard.jpg" alt="Cruising"></figure>
+      <figure class="tile"><img data-src="https://www.efoil-riders.com/cdn/shop/files/eFoil-Riders-Rental-Fliteboard.jpg?v=1735404374&width=1920"  alt="E-foil carving"></figure>
+      <figure class="tile"><img data-src="https://www.oceanpremium.com/wp-content/uploads/2023/04/fliteboard-rental-1-1024x683.webp" alt="Taking off"></figure>  
+      <figure class="tile"><img data-src="https://forum.e-surfer.com/uploads/default/original/2X/5/572cea9664ff49d3267b5b0a5a6d19ab6f4fc1ce.jpeg" alt="Cruising"></figure>
+    </div>
+  </section>
+</template>
     
   <section class="hero">
     <div class="hero-content">
@@ -272,5 +297,38 @@
       document.getElementById("navLinks").classList.toggle("active");
     });
   </script>
+
+  <script>
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navLinks").classList.toggle("active");
+    });
+  </script>
+  <script>
+/* lazy-insert the strip when it’s ~200 px away */
+window.addEventListener('load', () => {
+  const ph  = document.getElementById('imageStripPlaceholder');
+  const tpl = document.getElementById('imageStripTpl');
+
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+
+    /* 1 | inject the real HTML */
+    ph.replaceWith(tpl.content.cloneNode(true));
+
+    /* 2 | swap data-src → src so images start downloading (low priority) */
+    document.querySelectorAll('.image-strip img').forEach(img => {
+      img.loading       = 'lazy';
+      img.decoding      = 'async';
+      img.fetchPriority = 'low';   // Chrome 115+; ignored elsewhere
+      img.src           = img.dataset.src;
+    });
+
+    io.disconnect();               // clean-up
+  }, { rootMargin: '200px' });     // preload a little before it appears
+
+  io.observe(ph);
+});
+</script>
+  
 </body>
 </html>
