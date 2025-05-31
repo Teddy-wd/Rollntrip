@@ -53,23 +53,165 @@
 <template id="imageStripTpl">
   <section class="image-strip" aria-label="Sample sessions">
     <div class="strip-inner">
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/Fliteboard-Flitecell-Nano-Lifestyle.jpg" alt="Taking off"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/efoil-surfing.jpg" alt="E-foil carving"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/FliteBoard_D2_3276-scaled.jpg.jpg"  alt="E-foil carving"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/flite_5_2048x2048.jpg" alt="Cruising"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/2-5.jpg" alt="E-foil carving"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/145.jpg" alt="Cruising"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/145 (1).jpg" alt="Taking off"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/qlum4zzx6qhprdx58avvsnmo4hvh70gf.jpg" alt="E-foil carving"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/Flite_AIR_Evolving_to_PRO_blog_image_5.jpg" alt="Cruising"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/-processed.jpg" alt="Cruising"></figure> 
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/Fliteboard.jpg" alt="Cruising"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/eFoil-Riders-Rental-Fliteboard.jpg"  alt="E-foil carving"></figure>
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/fliteboard-rental-1-1024x683.jpg" alt="Taking off"></figure>  
-      <figure class="tile"><img data-src="https://raw.githubusercontent.com/Teddy-wd/qrflow/refs/heads/main/572cea9664ff49d3267b5b0a5a6d19ab6f4fc1ce.jpeg" alt="Cruising"></figure>
+      <!-- LCP / first-visible image -->
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/Fliteboard-Flitecell-Nano-Lifestyle.webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Taking off">
+      </figure>
+
+      <!-- All subsequent images -->
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/efoil-surfing.webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="E-foil carving">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/FliteBoard_D2_3276-scaled.jpg.webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="E-foil carving">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/flite_5_2048x2048.webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/2-5.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="E-foil carving">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/145.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/145%20(1).webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Taking off">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/qlum4zzx6qhprdx58avvsnmo4hvh70gf.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="E-foil carving">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/Flite_AIR_Evolving_to_PRO_blog_image_5.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/-processed.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/Fliteboard.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/eFoil-Riders-Rental-Fliteboard.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="E-foil carving">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/fliteboard-rental-1-1024x683.webp"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Taking off">
+      </figure>
+
+      <figure class="tile">
+        <img
+          src="https://cdn.jsdelivr.net/gh/Teddy-wd/proms/572cea9664ff49d3267b5b0a5a6d19ab6f4fc1ce.jpeg"
+          loading="lazy"
+          fetchpriority="low"
+          decoding="async"
+          width="320"
+          height="213"
+          alt="Cruising">
+      </figure>
     </div>
   </section>
 </template>
+
   
  <!-- eFoil Booking Section (Clean + Integrated) -->
 <section class="session-booking" style="padding: 3rem 1rem; max-width: 600px; margin: 0 auto;">
