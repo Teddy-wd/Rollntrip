@@ -416,6 +416,21 @@ body {
     }
 }
 
+/* 1.  Hide the flag bar by default (desktop & tablet) */
+.language-flags{
+  display:none;
+}
+
+/* 2.  Show it only when the viewport is narrow enough.
+       Pick the breakpoint that matches your menu-collapse width.   */
+@media (max-width:768px){      /* = “mobile” for this site */
+  .language-flags{
+    display:flex;      /* or inline-flex/grid as you prefer */
+    gap:.4rem;
+    font-size:1.3rem;  /* make the emojis tappable */
+  }
+}
+
   </style>
 
   </style>
