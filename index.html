@@ -9,6 +9,49 @@
   <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json">
 
+  <!-- put this <script> anywhere after the opening <head> tag -->
+<script>
+(function () {
+  /* ---- 0. run only once per browser tab ---- */
+  if (sessionStorage.getItem('langRedirectDone')) return;
+  sessionStorage.setItem('langRedirectDone', '1');
+
+  /* ---- 1. detect preferred language ---- */
+  const pref =
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    navigator.userLanguage ||
+    'en';
+  const lang = pref.toLowerCase();
+
+  /* ---- 2. map language → path/domain ---- */
+  // adjust these if you change your folder structure or domains
+  const map = {
+    fr: { path: '/fr', domain: 'https://rollntrip.vercel.app' },
+    de: { path: '/de', domain: 'https://rollntrip.vercel.app' },
+    en: { path: '/',  domain: 'https://rollntrip.com' }        // English default
+  };
+
+  const key = lang.startsWith('fr')
+             ? 'fr'
+             : lang.startsWith('de')
+             ? 'de'
+             : 'en';
+
+  const target = map[key];
+
+  /* ---- 3. bail if we’re already on the right version ---- */
+  const alreadyCorrect =
+    location.hostname.includes(target.domain.replace(/^https?:\/\//, '')) &&
+    (target.path === '/' || location.pathname.startsWith(target.path));
+
+  if (alreadyCorrect) return;
+
+  /* ---- 4. redirect ---- */
+  location.href = target.domain + target.path;
+})();
+</script>
+
   <!-- Other -->
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="https://i.ibb.co/4RNJ4STy/image-6-1.png" type="image/x-icon">
