@@ -1,4 +1,42 @@
  <style>
+
+/* ------------- layout ------------- */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;  /* logo | nav-links | hamburger on wide screens */
+  gap:1rem;
+  padding-inline:1rem;
+}
+
+/* ensure the flag group never vanishes */
+.language-flags{
+  display:flex;
+  gap:.4rem;
+  font-size:1.3rem;   /* make emojis a touch bigger than body text */
+}
+
+/* little spacing so taps are easy */
+.language-flags a{
+  line-height:1;       /* tighter box */
+  transition:opacity .2s;
+}
+.language-flags a:hover{ opacity:.7; }
+
+/* ------------- responsive ------------- */
+@media (max-width:768px){
+  .nav-links{          /* you already toggle this with JS */
+    position:absolute; /* off-canvas / dropdown etc. */
+    /* ... existing styles ... */
+  }
+
+  /* keep the hamburger on the far right, flags just before it */
+  .menu-toggle{ font-size:1.8rem; background:none; border:0; cursor:pointer; }
+
+  /* optional: if the header height is small, shrink the flags a bit */
+  .language-flags{ font-size:1.1rem; }
+}
+
         /* Down Arrow */
     .down-arrow {
       margin-top: 2rem;
