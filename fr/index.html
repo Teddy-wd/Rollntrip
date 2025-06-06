@@ -104,10 +104,12 @@
       <option value="30">30 min</option>
       <option value="60">60 min</option>
       <option value="90">90 min</option>
+      <option value="10">10 min - Offre d'essai</option>
     </select>
   </div>
 
   <div class="price-display" id="price">€79 par personne - Max. 3 personnes</div>
+  <div class="price-display" id="price">€159 par personne - Max. 3 personnes</div>
 
 <button class="book-button" onclick="showCalendly()">Réserver une date (gratuitement)</button>
 <div id="calendly-container" style="margin-top: 2rem; display: none;">
@@ -204,7 +206,8 @@
     const pricing = {
       "30": 79,
       "60": 159,
-      "90": 219
+      "90": 219,
+      "10": 10
     };
     priceElement.textContent = `€${pricing[duration]}`;
 
@@ -237,7 +240,8 @@
     const calendlyURLs = {
       "30": "https://calendly.com/booking-rollntrip/efoil30?hide_gdpr_banner=1&primary_color=000000",
       "60": "https://calendly.com/booking-rollntrip/efoil60?hide_gdpr_banner=1&primary_color=000000",
-      "90": "https://calendly.com/booking-rollntrip/efoil90?hide_gdpr_banner=1&primary_color=000000"
+      "90": "https://calendly.com/booking-rollntrip/efoil90?hide_gdpr_banner=1&primary_color=000000",
+      "10": "https://calendly.com/booking-rollntrip/efoil10?hide_gdpr_banner=1&primary_color=000000"
     };
 
     const selectedURL = calendlyURLs[duration] || calendlyURLs["30"]; // Fallback to 30min if nothing selected
