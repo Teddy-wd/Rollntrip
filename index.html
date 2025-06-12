@@ -64,10 +64,6 @@
     <a href="https://rollntrip.com/" class="logo">
       <img src="https://i.ibb.co/RMG26p5/image-4.png" alt="Roll'n'Trip Logo" />
     </a>
-
-<div class="phone-number white-text">
-  <a href="tel:+33698743339" class="phone-link">☎️ +33 6 98 74 33 39</a>
-</div>
     
     <div class="menu-toggle" id="menuToggle">☰</div>
     
@@ -157,7 +153,7 @@
     </select>
   </div>
 
-  <div class="price-display" id="price">€79 per person - Max. 6 people</div>
+  <div class="price-display" id="price">€79 per person - Max. 3 people</div>
 
 <button class="book-button" onclick="showCalendly()">Book a date (for Free)</button>
 <div id="calendly-container" style="margin-top: 2rem; display: none;">
@@ -270,53 +266,41 @@
 
   
    <!-- FOOTER -->
-<footer>
-  &copy; 2025 RollnTrip - 
-  <a href="tel:+33698743339" class="phone-link">☎️ +33 6 98 74 33 39</a>
-</footer>
+  <footer>
+    &copy; 2025 RollnTrip
+  </footer>
   
   <!-- Calendly Widget Script -->
   <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
   
 <script>
-function showCalendly () {
-  const container = document.getElementById('calendly-container');
-  const widget    = document.getElementById('calendly-inline-widget');
-  const duration  = document.getElementById('duration').value || '30';
+  function showCalendly() {
+    const container = document.getElementById("calendly-container");
+    const widget = document.getElementById("calendly-inline-widget");
+    const duration = document.getElementById("duration").value;
 
-  const urls = {
-    10: 'https://calendly.com/booking-rollntrip/efoil10?hide_gdpr_banner=1&primary_color=000000',
-    30: 'https://calendly.com/booking-rollntrip/efoil30?hide_gdpr_banner=1&primary_color=000000',
-    60: 'https://calendly.com/booking-rollntrip/efoil60?hide_gdpr_banner=1&primary_color=000000',
-    90: 'https://calendly.com/booking-rollntrip/efoil90?hide_gdpr_banner=1&primary_color=000000'
-  };
+    // Define URLs based on duration
+    const calendlyURLs = {
+      "10": "https://calendly.com/booking-rollntrip/efoil10?hide_gdpr_banner=1&primary_color=000000",
+      "30": "https://calendly.com/booking-rollntrip/efoil30?hide_gdpr_banner=1&primary_color=000000",
+      "60": "https://calendly.com/booking-rollntrip/efoil60?hide_gdpr_banner=1&primary_color=000000",
+      "90": "https://calendly.com/booking-rollntrip/efoil90?hide_gdpr_banner=1&primary_color=000000"
+    };
 
-  const url = urls[duration] || urls[30];
+    const selectedURL = calendlyURLs[duration] || calendlyURLs["30"]; // Fallback to 30min if nothing selected
 
-  // 1 – Make the container visible **before** instantiating the widget
-  container.style.display = 'block';
+    // Clear and reset widget
+    widget.innerHTML = "";
 
-  // 2 – Wait if Calendly hasn’t finished loading yet
-  const init = () => {
-    widget.innerHTML = '';
-    window.Calendly.initInlineWidget({ url, parentElement: widget });
-    widget.scrollIntoView({ behavior: 'smooth' });
-  };
+    Calendly.initInlineWidget({
+      url: selectedURL,
+      parentElement: widget
+    });
 
-  if (window.Calendly && window.Calendly.initInlineWidget) {
-    init();
-  } else {
-    // Poll every 100 ms until the script sets window.Calendly
-    const t = setInterval(() => {
-      if (window.Calendly && window.Calendly.initInlineWidget) {
-        clearInterval(t);
-        init();
-      }
-    }, 100);
+    container.style.display = "block";
+    container.scrollIntoView({ behavior: "smooth" });
   }
-}
 </script>
-
 
 <script>
   const beachOptions = {
