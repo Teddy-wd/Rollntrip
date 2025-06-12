@@ -475,6 +475,11 @@ body {
   vertical-align: middle;
 }
 
+.phone-link {
+  color: inherit;          /* keep your current text colour */
+  text-decoration: none;   /* no underlines */
+}
+
   </style>
 
   </style>
